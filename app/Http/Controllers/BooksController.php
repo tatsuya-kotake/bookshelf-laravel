@@ -10,12 +10,19 @@ class BooksController extends Controller
     public function index()
     {
       $books = Book::all();
+      $booksUnreadCount = Book::where('status', "unread")->count();
+      $booksReadingCount = Book::where('status', "reading")->count();
+      $booksFinishedCount = Book::where('status', "finished")->count();
+
       foreach ($books as $book) {
           $book->image = str_replace('public/', 'storage/', $book->image);
       }
 
       return view('index',[
           "books" => $books,
+          "booksUnreadCount" => $booksUnreadCount,
+          "booksReadingCount" => $booksReadingCount,
+          "booksFinishedCount" => $booksFinishedCount,
       ]);
     }
 

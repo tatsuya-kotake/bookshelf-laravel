@@ -7,23 +7,20 @@
 @section('index')
     <div id="cover">
         <h1 id="cover_title">BOOK SHELF</h1>
-
-        <!-- 本カウント機能
         <form action="index.php" method="post">
             <div class="book_status unread active">
                 <input type="submit" name="submit_only_unread" value="未読">
-                <div class="book_count"><?php //print h($count_unread); ?></div>
+                <div class="book_count"><?php echo($booksUnreadCount); ?></div>
             </div>
             <div class="book_status reading active">
                 <input type="submit" name="submit_only_reading" value="読中"><br>
-                <div class="book_count"><?php //print h($count_reading); ?></div>
+                <div class="book_count"><?php echo($booksReadingCount); ?></div>
             </div>
             <div class="book_status finished active">
                 <input type="submit" name="submit_only_finished" value="読了"><br>
-                <div class="book_count"><?php //print h($count_finished); ?></div>
+                <div class="book_count"><?php echo($booksFinishedCount); ?></div>
             </div>
         </form>
-      -->
     </div>
 
     <div class="wrapper">
@@ -34,7 +31,6 @@
 
                         <div class="book_image">
                             <img src="/{{ $book->image }}" alt="書籍画像{{$book->image}}">
-
                         </div>
 
                         <div class="book_detail">
