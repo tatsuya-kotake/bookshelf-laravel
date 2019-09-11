@@ -33,7 +33,8 @@
                     <div class="book_item">
 
                         <div class="book_image">
-                             <img src="{{$book->image}}" alt="書籍画像">
+                            <img src="/{{ $book->image }}" alt="書籍画像{{$book->image}}">
+
                         </div>
 
                         <div class="book_detail">

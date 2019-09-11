@@ -10,8 +10,12 @@ class BooksController extends Controller
     public function index()
     {
       $books = Book::all();
+      foreach ($books as $book) {
+          $book->image = str_replace('public/', 'storage/', $book->image);
+      }
+
       return view('index',[
-          "books" => $books
+          "books" => $books,
       ]);
     }
 
@@ -19,7 +23,7 @@ class BooksController extends Controller
     {
         $book = new Book();
         $book->name = $request->book_title;
-        $book->image = $request->book_image;
+        $book->image = $request->book_image->store('public/post_images');
         $book->save();
         return redirect('/');
     }
@@ -27,7 +31,7 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {
         $book = Book::find($id);
-        
+
         if ($request->unread) {
           $book->status = "unread";
         }elseif ($request->reading) {
