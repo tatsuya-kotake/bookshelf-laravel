@@ -8,7 +8,7 @@
 <div id="wrapper">
    <div id="main">
        <form action="{{ url('/')}}" method="POST" class="form_book" enctype="multipart/form-data">
-           {{ csrf_field() }}
+           @csrf
            <div class="book_title">
                <input type="text" name="book_title" placeholder="書籍タイトルを入力">
            </div>

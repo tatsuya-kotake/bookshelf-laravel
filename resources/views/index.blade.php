@@ -41,9 +41,9 @@
                                 {{$book->name}}
                             </div>
                             <form action="/update/{{$book->id}}" method="POST">
-                                    {{ csrf_field() }}
+                                    @csrf
                                     <div class="book_status unread <?php if ($book->status == "unread") print "active"; ?>">
-                                    <input type="submit" name="unread" value="未読">
+                                        <input type="submit" name="unread" value="未読">
                                     </div>
                                     <div class="book_status reading <?php if ($book->status == "reading") print "active"; ?>">
                                         <input type="submit" name="reading" value="読中">
@@ -54,7 +54,7 @@
                             </form>
                             <form action="/delete/{{$book->id}}" method="POST">
                                     <div class="book_delete">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <input type="submit" value="削除する"><img src="img/icon_trash.png" alt="icon trash">
                                     </div>
                             </form>

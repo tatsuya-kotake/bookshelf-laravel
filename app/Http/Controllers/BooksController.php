@@ -24,10 +24,18 @@ class BooksController extends Controller
         return redirect('/');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $book = Book::find($request->id);
-        $book->status = $request->name;
+        $book = Book::find($id);
+        
+        if ($request->unread) {
+          $book->status = "unread";
+        }elseif ($request->reading) {
+          $book->status = "reading";
+        }elseif ($request->finished){
+          $book->status = "finished";
+        }
+
         $book->save();
         return redirect('/');
     }
