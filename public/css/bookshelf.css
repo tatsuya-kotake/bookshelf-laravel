@@ -34,6 +34,10 @@ header {
     box-shadow: 1px 1px 20px 1px #e6e6e6;
 }
 
+#navbarDropdown {
+  padding: 0;
+}
+
 #header {
     max-width: 100%;
     height: 60px;
@@ -224,7 +228,7 @@ footer {
 }
 
 /* form */
-
+/*
 .form_book {
     width: 400px;
     margin: 20px auto;
@@ -248,7 +252,14 @@ footer {
     cursor: pointer;
     background-color: #1ca40a;
 }
+ */
+.book-title {
+    margin-bottom: 1rem;
+}
 
+.book-image {
+		margin-bottom: 1rem;
+}
 /* register */
 
 .card {

@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Book;
+use App\User;
 
 class BooksController extends Controller
 {
+
+		public function __construct()
+		{
+				$this->middleware('auth');
+		}
+
     public function index()
     {
-      $books = Book::all();
+			/*
+			$user_id = Auth::user()->id;
+      $books = Book::where('user_id', $user_id);
+			*/
+			$books = Book::where('user_id', Auth::user()->id)->get();
       $booksUnreadCount = Book::where('status', "unread")->count();
       $booksReadingCount = Book::where('status', "reading")->count();
       $booksFinishedCount = Book::where('status', "finished")->count();
@@ -29,6 +41,7 @@ class BooksController extends Controller
     public function create(Request $request)
     {
         $book = new Book();
+				$book->user_id = Auth::user()->id;
         $book->name = $request->book_title;
         $book->image = $request->book_image->store('public/post_images');
         $book->save();
